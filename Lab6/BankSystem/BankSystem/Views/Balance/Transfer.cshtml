@@ -1,0 +1,45 @@
+﻿@model BankSystem.Models.BalanceModels.TransferBalanceModel
+
+<form asp-action="Profile" asp-controller="User" asp-anti-forgery="true">
+    <input type="submit" value="Назад">
+</form>
+
+<h1>Перевод на другой счет</h1>
+
+<form asp-action="Transfer" asp-controller="Balance" asp-anti-forgery="true">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <div>
+        <div>
+            <label asp-for="Money">Введите сумму перевода</label><br />
+            <input type="text" asp-for="Money" />
+            <span asp-validation-for="Money" />
+        </div>
+        <div>
+            <label asp-for="UserNameTo">Введите имя пользователя получателя</label><br />
+            <input type="text" asp-for="UserNameTo" />
+            <span asp-validation-for="UserNameTo" />
+        </div>
+        <div>
+            <label asp-for="BankNameTo">Введите наименование банка получателя</label><br />
+            <input type="text" asp-for="BankNameTo" />
+            <span asp-validation-for="BankNameTo" />
+        </div>
+        <div>
+            <label asp-for="BalanceNameTo">Введите наименование счета получателя</label><br />
+            <input type="text" asp-for="BalanceNameTo" />
+            <span asp-validation-for="BalanceNameTo" />
+        </div>
+        <div>
+            <input type="hidden" asp-for="IdFrom" value="@ViewBag.balanceId" />
+        </div>
+        <div>
+            <input type="submit" value="Перевести" />
+        </div>
+    </div>
+</form>
+
+@section scripts{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

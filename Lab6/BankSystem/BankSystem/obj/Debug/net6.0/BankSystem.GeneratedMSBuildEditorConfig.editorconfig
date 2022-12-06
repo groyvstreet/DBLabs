@@ -1,0 +1,172 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = BankSystem
+build_property.RootNamespace = BankSystem
+build_property.ProjectDir = D:\Labs\DB\Lab6\BankSystem\BankSystem\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Labs\DB\Lab6\BankSystem\BankSystem
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Admin/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Balance/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFsYW5jZVxBZGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Balance/Open.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFsYW5jZVxPcGVuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Balance/Transfer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFsYW5jZVxUcmFuc2Zlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Balance/Transfers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFsYW5jZVxUcmFuc2ZlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Bank/Banks.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFua1xCYW5rcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Bank/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFua1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Bank/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFua1xEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Bank/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFua1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Client/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XFByb2ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Client/Signup.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XFNpZ251cC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Credit/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3JlZGl0XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Credit/CreditPayments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3JlZGl0XENyZWRpdFBheW1lbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Credit/Get.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3JlZGl0XEdldC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Credit/Pay.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3JlZGl0XFBheS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Credit/PayAll.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3JlZGl0XFBheUFsbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Deposit/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwb3NpdFxBZGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Deposit/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwb3NpdFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Deposit/DepositReplenishments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwb3NpdFxEZXBvc2l0UmVwbGVuaXNobWVudHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Deposit/Get.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwb3NpdFxHZXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Deposit/Transfer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwb3NpdFxUcmFuc2Zlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Manager/Balances.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlclxCYWxhbmNlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Manager/Bank.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlclxCYW5rLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Manager/Clients.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlclxDbGllbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Manager/Credits.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlclxDcmVkaXRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Manager/Deposits.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlclxEZXBvc2l0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Manager/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlclxQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Manager/Transfers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlclxUcmFuc2ZlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Moderator/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9kZXJhdG9yXFByb2ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Moderator/SignupApplications.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9kZXJhdG9yXFNpZ251cEFwcGxpY2F0aW9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/User/Actions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxBY3Rpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/User/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Labs/DB/Lab6/BankSystem/BankSystem/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-fpx3uhqylh

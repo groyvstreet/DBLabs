@@ -1,0 +1,26 @@
+﻿@model BankSystem.Models.BankModels.EditBankModel;
+
+<form asp-action="Edit" asp-controller="Bank" asp-anti-forgery="true">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <div>
+        <div>
+            <label asp-for="Name">Введите название</label><br />
+            <input type="text" asp-for="Name" />
+            <span asp-validation-for="Name" />
+        </div>
+        <div>
+            <label asp-for="DepositPercent">Введите процент для вклада</label><br />
+            <input asp-for="DepositPercent" />
+            <span asp-validation-for="DepositPercent" />
+        </div>
+        <div>
+            <label asp-for="CreditPercent">Введите процент для кредита</label><br />
+            <input asp-for="CreditPercent" />
+            <span asp-validation-for="CreditPercent" />
+        </div>
+        <input type="hidden" asp-for="BankId" value="@ViewBag.BankId" />
+        <div>
+            <input type="submit" value="Сохранить" />
+        </div>
+    </div>
+</form>

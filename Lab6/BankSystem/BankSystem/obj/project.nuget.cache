@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "cseUp2Z2T2x4FokvowAelNlrYvxjh4xHe9WUMFuFdjuJi/0pvggndA8m/Xdgdv0Vk1SHK/XGXDZN/X7XHut+ew==",
+  "success": true,
+  "projectFilePath": "D:\\Labs\\DB\\Lab6\\BankSystem\\BankSystem\\BankSystem.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Kraken\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\Kraken\\.nuget\\packages\\npgsql\\7.0.0\\npgsql.7.0.0.nupkg.sha512",
+    "C:\\Users\\Kraken\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

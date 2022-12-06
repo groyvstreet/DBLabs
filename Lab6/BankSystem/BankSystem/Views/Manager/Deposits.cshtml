@@ -1,0 +1,66 @@
+﻿@using BankSystem.Models.Entities
+@model IEnumerable<Deposit>
+
+<form asp-action="Clients" asp-controller="Manager" asp-anti-forgery="true">
+    <input type="submit" value="Назад">
+</form>
+
+@if (Model.Any())
+{
+    <table cellpadding="10" border="1">
+        <caption>Список вкладов</caption>
+        <tr>
+            <th>Сумма</th>
+            <th>Процент %</th>
+            <th>Время создания</th>
+        </tr>
+        @foreach (var deposit in Model)
+        {
+            <tr>
+                <td>@deposit.Money</td>
+                <td>@deposit.Percent</td>
+                <td>@deposit.CreationTime</td>
+                @if (deposit.Blocked)
+                {
+                    <td>
+                        <form asp-action="Unblock" asp-controller="Manager" asp-anti-forgery="true" method="get">
+                            <input type="hidden" name="depositId" value="@deposit.Id" />
+                            <input type="submit" value="Разблокировать вклад">
+                        </form>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <form asp-action="Block" asp-controller="Manager" asp-anti-forgery="true" method="get">
+                            <input type="hidden" name="depositId" value="@deposit.Id" />
+                            <input type="submit" value="Заблокировать вклад">
+                        </form>
+                    </td>
+                }
+                @if (deposit.Freezed)
+                {
+                    <td>
+                        <form asp-action="Unfreeze" asp-controller="Manager" asp-anti-forgery="true" method="get">
+                            <input type="hidden" name="depositId" value="@deposit.Id" />
+                            <input type="submit" value="Разморозить вклад">
+                        </form>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <form asp-action="Freeze" asp-controller="Manager" asp-anti-forgery="true" method="get">
+                            <input type="hidden" name="depositId" value="@deposit.Id" />
+                            <input type="submit" value="Заморозить вклад">
+                        </form>
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>Зарегистрированных вкладов нет</p>
+}

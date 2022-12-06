@@ -1,0 +1,16 @@
+﻿@model BankSystem.Models.ManagerModels.ProfileModel;
+
+<form asp-action="Logout" asp-controller="User" asp-anti-forgery="true">
+    <input type="submit" value="Выйти">
+</form>
+
+<h2>Профиль менеджера</h2>
+<p>Email: @Model.Email</p>
+<p>Имя: @Model.FirstName</p>
+<p>Фамилия: @Model.LastName</p>
+<p>Отчество: @Model.Patronymic</p>
+<p>Номер телефона: @Model.PhoneNumber</p>
+
+<form asp-action="Clients" asp-controller="Manager" asp-anti-forgery="true">
+    <input type="submit" value="Клиенты">
+</form>

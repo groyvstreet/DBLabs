@@ -1,0 +1,48 @@
+﻿@using BankSystem.Models.Entities
+@model IEnumerable<Client>
+
+<form asp-action="Profile" asp-controller="Moderator" asp-anti-forgery="true">
+    <input type="submit" value="Назад">
+</form>
+
+@if (@Model.Any())
+{
+    <table cellpadding="10">
+        <caption>Заявки на регистрацию</caption>
+        <tr>
+            <td>Имя</td>
+            <td>Фамилия</td>
+            <td>Отчество</td>
+            <td>Номер телефона</td>
+            <td>Серия паспорта</td>
+            <td>Номер паспорта</td>
+            <td>Идентификационный номер</td>
+        </tr>
+        @foreach (var client in Model)
+        {
+            <tr>
+                <td>@client.FirstName</td>
+                <td>@client.LastName</td>
+                <td>@client.Patronymic</td>
+                <td>@client.PhoneNumber</td>
+                <td>@client.PassportSeries</td>
+                <td>@client.PassportNumber</td>
+                <td>@client.IdentificationNumber</td>
+                <td>
+                    <form asp-action="ApproveSignup" asp-controller="Moderator" asp-anti-forgery="true" method="get">
+                        <input type="hidden" name="clientId" value="@client.Id" />
+                        <input type="submit" value="Одобрить">
+                    </form>
+                    <form asp-action="RejectSignup" asp-controller="Moderator" asp-anti-forgery="true" method="get">
+                        <input type="hidden" name="clientId" value="@client.Id" />
+                        <input type="submit" value="Отклонить">
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>Заявок на регистрацию нет</p>
+}

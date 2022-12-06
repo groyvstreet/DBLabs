@@ -3,6 +3,13 @@ CREATE DATABASE banksystemdb;
 DROP TABLE IF EXISTS balances, bankclients, banks, blacklists, clients, creditpayments, credits,
 depositreplenishments, deposits, managers, roles, transfers, users, blacklistclients CASCADE;
 
+CREATE TABLE logs
+(
+	id uuid PRIMARY KEY,
+	date_time timestamp NOT NULL,
+	action text NOT NULL
+);
+
 CREATE TABLE roles
 (
 	id uuid PRIMARY KEY,
@@ -83,8 +90,8 @@ CREATE TABLE transfers
     id uuid PRIMARY KEY,
     money decimal NOT NULL,
     date_time timestamp NOT NULL,
-    from_balance_id uuid REFERENCES balances(id) NOT NULL,
-    to_balance_id uuid REFERENCES balances(id) NOT NULL
+    from_balance_id uuid REFERENCES balances(id) ON DELETE SET NULL,
+    to_balance_id uuid REFERENCES balances(id) ON DELETE SET NULL
 );
 
 CREATE INDEX from_balance_id_index ON transfers (from_balance_id);
@@ -114,6 +121,7 @@ CREATE TABLE credits
     creation_date date NOT NULL,
     payment_date date NOT NULL,
     is_approved boolean NOT NULL,
+	is_getted boolean NOT NULL,
     client_id uuid REFERENCES clients(id) NOT NULL,
     bank_id uuid REFERENCES banks(id) NOT NULL
 );
@@ -125,7 +133,7 @@ CREATE TABLE creditpayments
     id uuid PRIMARY KEY,
     money decimal NOT NULL,
     date_time timestamp NOT NULL,
-    credit_id uuid REFERENCES credits(id) NOT NULL
+    credit_id uuid REFERENCES credits(id) ON DELETE CASCADE
 );
 
 CREATE INDEX credit_id_index ON creditpayments (credit_id);
@@ -135,7 +143,7 @@ CREATE TABLE depositreplenishments
     id uuid PRIMARY KEY,
     money decimal NOT NULL,
     date_time timestamp NOT NULL,
-    deposit_id uuid REFERENCES deposits(id) NOT NULL
+    deposit_id uuid REFERENCES deposits(id) ON DELETE CASCADE
 );
 
 CREATE INDEX deposit_id_index ON depositreplenishments (deposit_id);

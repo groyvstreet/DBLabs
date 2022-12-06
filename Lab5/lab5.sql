@@ -55,18 +55,19 @@ $$
 create trigger trigger_transfer
 after insert on transfers for each row execute procedure update_balances();
 
--- procedure add transfer
-create or replace procedure add_transfer(money decimal, from_user_name varchar(1000), from_balance_name varchar(100), to_user_name varchar(1000), to_balance_name varchar(100)) language plpgsql
+create or replace procedure add_transfer(money decimal, from_user_name varchar(1000), from_balance_name varchar(100), from_bank_name varchar(100), to_user_name varchar(1000), to_balance_name varchar(100), to_bank_name varchar(100)) language plpgsql
 as $$
 declare
     from_balance_id uuid;
     to_balance_id uuid;
 begin
     from_balance_id = (select id from balances where name = from_balance_name and client_id =
-        (select id from users where user_name = from_user_name));
+        (select id from users where user_name = from_user_name) and bank_id =
+					  (select id from banks where name = from_bank_name));
 
     to_balance_id = (select id from balances where name = to_balance_name and client_id =
-        (select id from users where user_name = to_user_name));
+        (select id from users where user_name = to_user_name) and bank_id =
+					(select id from banks where name = to_bank_name));
 
     insert into transfers values(gen_random_uuid(), money, NOW()::timestamp, from_balance_id, to_balance_id);
 end;

@@ -1,0 +1,30 @@
+﻿@using BankSystem.Models.Entities
+@model IEnumerable<Balance>
+
+<form asp-action="Clients" asp-controller="Manager" asp-anti-forgery="true">
+    <input type="submit" value="Назад">
+</form>
+
+@if (Model.Any())
+{
+    <table cellpadding="10">
+        <caption>Список счетов</caption>
+        <tr>
+            <th>Название</th>
+            <th>Сумма</th>
+            <th>Банк</th>
+        </tr>
+        @foreach (var balance in Model)
+        {
+            <tr>
+                <td>@balance.Name</td>
+                <td>@balance.Money</td>
+                <td>@balance.Bank</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>У вас ещё нет счетов</p>
+}

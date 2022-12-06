@@ -1,0 +1,24 @@
+﻿@using BankSystem.Models.Entities
+@model IEnumerable<BankSystem.Models.Entities.Action>
+
+@if (Model.Any())
+{
+    <table cellpadding="10">
+        <caption>Список действий пользователей</caption>
+        <tr>
+            <th>Дата и время</th>
+            <th>Действие</th>
+        </tr>
+        @foreach (var action in Model)
+        {
+            <tr>
+                <td>@action.DateTime</td>
+                <td>@action.Text</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>Действий не было</p>
+}

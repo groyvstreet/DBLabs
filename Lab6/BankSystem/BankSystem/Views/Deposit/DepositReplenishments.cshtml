@@ -1,0 +1,28 @@
+﻿@using BankSystem.Models.Entities
+@model IEnumerable<DepositReplenishment>
+
+<form asp-action="Profile" asp-controller="Client" asp-anti-forgery="true">
+    <input type="submit" value="Назад">
+</form>
+
+@if (Model.Any())
+{
+    <table cellpadding="10">
+        <caption>Список пополнений</caption>
+        <tr>
+            <th>Сумма</th>
+            <th>Дата и время</th>
+        </tr>
+        @foreach (var replenishment in Model)
+        {
+            <tr>
+                <td>@replenishment.Money</td>
+                <td>@replenishment.DateTime</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>Пополнений не было</p>
+}

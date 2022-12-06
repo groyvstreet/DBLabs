@@ -1,0 +1,77 @@
+﻿@model BankSystem.Models.ClientModels.SignupClientModel
+
+<form asp-action="Login" asp-controller="User" asp-anti-forgery="true">
+    <input type="submit" value="Авторизация">
+</form>
+
+<h2>Регистрация</h2>
+
+<form asp-action="Signup" asp-controller="Client" asp-anti-forgery="true">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <div>
+        <div>
+            <label asp-for="UserName">Введите Имя пользователя</label><br />
+            <input type="text" asp-for="UserName" />
+            <span asp-validation-for="UserName" />
+        </div>
+        <div>
+            <label asp-for="Email">Введите Email</label><br />
+            <input type="text" asp-for="Email" />
+            <span asp-validation-for="Email" />
+        </div>
+        <div>
+            <label asp-for="FirstName">Введите Имя</label><br />
+            <input type="text" asp-for="FirstName" />
+            <span asp-validation-for="FirstName" />
+        </div>
+        <div>
+            <label asp-for="LastName">Введите Фамилию</label><br />
+            <input type="text" asp-for="LastName" />
+            <span asp-validation-for="LastName" />
+        </div>
+        <div>
+            <label asp-for="Patronymic">Введите Отчество</label><br />
+            <input type="text" asp-for="Patronymic" />
+            <span asp-validation-for="Patronymic" />
+        </div>
+        <div>
+            <label asp-for="PhoneNumber">Введите номер телефона</label><br />
+            <input type="text" asp-for="PhoneNumber" />
+            <span asp-validation-for="PhoneNumber" />
+        </div>
+        <div>
+            <label asp-for="PassportSeries">Введите серию паспорта</label><br />
+            <input type="text" asp-for="PassportSeries" />
+            <span asp-validation-for="PassportSeries" />
+        </div>
+        <div>
+            <label asp-for="PassportNumber">Введите номер паспорта</label><br />
+            <input type="text" asp-for="PassportNumber" />
+            <span asp-validation-for="PassportNumber" />
+        </div>
+        <div>
+            <label asp-for="IdentificationNumber">Введите идентификационный номер паспорта</label><br />
+            <input type="text" asp-for="IdentificationNumber" />
+            <span asp-validation-for="IdentificationNumber" />
+        </div>
+        <div>
+            <label asp-for="Password">Введите пароль</label><br />
+            <input asp-for="Password" />
+            <span asp-validation-for="Password" />
+        </div>
+        <div>
+            <label asp-for="ConfirmPassword">Повторите пароль</label><br />
+            <input asp-for="ConfirmPassword" />
+            <span asp-validation-for="ConfirmPassword" />
+        </div>
+        <div>
+            <input type="submit" value="Регистрация" />
+        </div>
+    </div>
+</form>
+
+@section scripts{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

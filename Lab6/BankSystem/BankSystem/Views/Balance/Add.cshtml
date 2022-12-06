@@ -1,0 +1,30 @@
+﻿@model BankSystem.Models.BalanceModels.AddBalanceModel
+
+<form asp-action="Profile" asp-controller="User" asp-anti-forgery="true">
+    <input type="submit" value="Назад">
+</form>
+
+<h1>Пополнение счета</h1>
+
+<form asp-action="Add" asp-controller="Balance" asp-anti-forgery="true">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <div>
+        <div>
+            <label asp-for="Money">Введите денежную сумму</label><br />
+            <input type="text" asp-for="Money" />
+            <span asp-validation-for="Money" />
+        </div>
+        <div>
+            <input type="hidden" asp-for="Id" value="@ViewBag.BalanceId" />
+        </div>
+        <div>
+            <input type="submit" value="Пополнить счет" />
+        </div>
+    </div>
+</form>
+
+@section scripts{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

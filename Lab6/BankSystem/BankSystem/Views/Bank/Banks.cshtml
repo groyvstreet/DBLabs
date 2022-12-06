@@ -1,0 +1,33 @@
+﻿@using BankSystem.Models.Entities
+@model IEnumerable<Bank>
+
+@if (User.IsInRole("admin")) {
+    <form asp-action="Create" asp-controller="Bank" asp-anti-forgery="true" method="get">
+        <input type="submit" value="Создать">
+    </form>
+}
+
+<table cellpadding="10">
+    @foreach (var bank in Model)
+    {
+        <tr>
+            <td>
+                @bank.Name
+            </td>
+            <td>
+                <form asp-action="Detail" asp-controller="Bank" asp-anti-forgery="true" method="get">
+                    <input type="hidden" name="bankId" value="@bank.Id" />
+                    <input type="submit" value="Перейти к банку">
+                </form>
+            <td>
+            <td>
+                @if (User.IsInRole("admin")) {
+                    <form asp-action="Delete" asp-controller="Bank" asp-anti-forgery="true" method="get">
+                        <input type="hidden" name="bankId" value="@bank.Id" />
+                        <input type="submit" value="Удалить">
+                    </form>
+                }
+            <td>
+        </tr>
+    }
+</table>

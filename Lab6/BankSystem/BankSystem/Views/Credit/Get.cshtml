@@ -1,0 +1,36 @@
+﻿@model BankSystem.Models.CreditModels.GetCreditModel
+
+<form asp-action="Profile" asp-controller="Client" asp-anti-forgery="true" method="get">
+    <input type="submit" value="Назад">
+</form>
+
+@if (Model.Balances.Any())
+{
+    <table cellpadding="10">
+        <caption>Список счетов</caption>
+        <tr>
+            <th>Название</th>
+            <th>Сумма</th>
+            <th>Банк</th>
+        </tr>
+        @foreach (var balance in Model.Balances)
+        {
+            <tr>
+                <td>@balance.Name</td>
+                <td>@balance.Money</td>
+                <td>@balance.Bank</td>
+                <td>
+                    <form asp-action="Get" asp-controller="Credit" asp-anti-forgery="true" method="post">
+                        <input type="hidden" asp-for="CreditId" value="@ViewBag.CreditId" />
+                        <input type="hidden" asp-for="BalanceId" value="@balance.Id" />
+                        <input type="submit" value="Получить сюда">
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>У вас ещё нет счетов</p>
+}

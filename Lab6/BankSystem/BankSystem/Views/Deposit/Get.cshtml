@@ -1,0 +1,37 @@
+﻿@model BankSystem.Models.DepositModels.GetDepositModel
+
+<form asp-action="Profile" asp-controller="Client" asp-anti-forgery="true" method="get">
+    <input type="submit" value="Назад">
+</form>
+
+<p>Накопленная сумма @Model.Money</p>
+
+@if (Model.Balances.Any())
+{
+    <table cellpadding="10">
+        <caption>Список счетов</caption>
+        <tr>
+            <th>Название</th>
+            <th>Сумма</th>
+        </tr>
+        @foreach (var balance in Model.Balances)
+        {
+            <tr>
+                <td>@balance.Name</td>
+                <td>@balance.Money</td>
+                <td>
+                    <form asp-action="Get" asp-controller="Deposit" asp-anti-forgery="true" method="post">
+                        <input type="hidden" asp-for="DepositId" value="@ViewBag.DepositId" />
+                        <input type="hidden" asp-for="BalanceId" value="@balance.Id" />
+                        <input type="hidden" asp-for="Money" value="@ViewBag.Money" />
+                        <input type="submit" value="Вывести сюда">
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>У вас ещё нет счетов</p>
+}

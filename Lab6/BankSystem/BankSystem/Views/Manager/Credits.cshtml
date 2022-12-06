@@ -1,0 +1,63 @@
+﻿@using BankSystem.Models.Entities
+@model IEnumerable<Credit>
+
+<form asp-action="Clients" asp-controller="Manager" asp-anti-forgery="true" method="get">
+    <input type="submit" value="Назад">
+</form>
+
+@if (Model.Any())
+{
+    <table cellpadding="10">
+        <caption>Список кредитов</caption>
+        <tr>
+            <th>Сумма</th>
+            <th>Процент</th>
+            <th>Выплачиваемая сумма</th>
+            <th>Выплачено</th>
+            <th>Дата оформления</th>
+            <th>Последний день выплат</th>
+        </tr>
+        @foreach (var credit in Model)
+        {
+            <tr>
+                <td>@credit.Money</td>
+                <td>@credit.Percent</td>
+                <td>@credit.MoneyWithPercent</td>
+                <td>@credit.MoneyPayed</td>
+                @if (credit.Approved)
+                {
+                    <td>@credit.CreationTime</td>
+                }
+                else
+                {
+                    <td>---</td>
+                }
+                @if (credit.Approved)
+                {
+                    <td>@credit.PaymentTime</td>
+                }
+                else
+                {
+                    <td>---</td>
+                }
+                @if (!credit.Approved)
+                {
+                    <td>
+                        <form asp-action="ApproveCredit" asp-controller="Manager" asp-anti-forgery="true" method="get">
+                            <input type="hidden" name="creditId" value="@credit.Id" />
+                            <input type="submit" value="Подтвердить">
+                        </form>
+                        <form asp-action="RejectCredit" asp-controller="Manager" asp-anti-forgery="true" method="get">
+                            <input type="hidden" name="creditId" value="@credit.Id" />
+                            <input type="submit" value="Отклонить">
+                        </form>
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>Нет зарегистрированных кредитов</p>
+}

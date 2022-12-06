@@ -1,0 +1,33 @@
+﻿@model BankSystem.Models.BalanceModels.OpenBalanceModel
+
+<form asp-action="Profile" asp-controller="User" asp-anti-forgery="true">
+    <input type="submit" value="Назад">
+</form>
+
+<h1>Открытие счета</h1>
+
+<form asp-action="Open" asp-controller="Balance" asp-anti-forgery="true">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <div>
+        <div>
+            <label asp-for="Name">Введите название</label><br />
+            <input type="text" asp-for="Name" />
+            <span asp-validation-for="Name" />
+        </div>
+        <div>
+            <label asp-for="Money">Введите денежную сумму</label><br />
+            <input type="text" asp-for="Money" />
+            <span asp-validation-for="Money" />
+        </div>
+        <input type="hidden" asp-for="BankId" value="@ViewBag.BankId" />
+        <div>
+            <input type="submit" value="Открыть счет" />
+        </div>
+    </div>
+</form>
+
+@section scripts{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

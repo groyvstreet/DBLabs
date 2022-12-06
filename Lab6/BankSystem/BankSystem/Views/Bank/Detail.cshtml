@@ -1,0 +1,48 @@
+﻿@model BankSystem.Models.BankModels.BankDetailModel
+
+@if (User.IsInRole("admin"))
+{
+    <form asp-action="Edit" asp-controller="Bank" asp-anti-forgery="true" method="get">
+        <input type="hidden" name="bankId" value="@Model.Id" />
+        <input type="submit" value="Редактировать">
+    </form>
+}
+
+<h1>@Model.Name</h1>
+<p>Процент для депозита: @Model.DepositPercent</p>
+<p>Процент для кредита: @Model.CreditPercent</p>
+
+@if (User.IsInRole("client"))
+{
+    if (Model.IsClientRegistered)
+    {
+        <p>Вы зарегистрированы</p>
+        <form asp-action="Create" asp-controller="Deposit" asp-anti-forgery="true" method="get">
+            <input type="hidden" name="bankId" value="@Model.Id" />
+            <input type="submit" value="Создать вклад">
+        </form>
+        <form asp-action="Open" asp-controller="Balance" asp-anti-forgery="true" method="get">
+            <input type="hidden" name="bankId" value="@Model.Id" />
+            <input type="submit" value="Открыть счет">
+        </form>
+        if (Model.IsClientInBlackList)
+        {
+            <p>Вы в черном списке</p>
+        }
+        else
+        {
+            <form asp-action="Create" asp-controller="Credit" asp-anti-forgery="true" method="get">
+                <input type="hidden" name="bankId" value="@Model.Id" />
+                <input type="submit" value="Оформить кредит">
+            </form>
+        }
+    }
+    else
+    {
+        <form asp-action="Register" asp-controller="Bank" asp-anti-forgery="true" method="post">
+            <input type="hidden" name="bankId" value="@Model.Id" />
+            <input type="submit" value="Зарегистрироваться">
+        </form>
+    }
+
+}

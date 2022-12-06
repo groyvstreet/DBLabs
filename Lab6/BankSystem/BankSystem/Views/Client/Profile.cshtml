@@ -1,0 +1,214 @@
+﻿@{
+}
+
+@model BankSystem.Models.ClientModels.ProfileModel;
+
+<form asp-action="LogOut" asp-controller="User" asp-anti-forgery="true">
+    <input type="submit" value="Выйти">
+</form>
+
+<h2>Профиль клиента</h2>
+<p>Email: @Model.Email</p>
+<p>Имя: @Model.FirstName</p>
+<p>Фамилия: @Model.LastName</p>
+<p>Отчество: @Model.Patronymic</p>
+<p>Номер телефона: @Model.PhoneNumber</p>
+<p>Серия паспорта: @Model.PassportSeries</p>
+<p>Номер паспорта: @Model.PassportNumber</p>
+<p>Идентификационный номер: @Model.IdentificationNumber</p>
+
+@if (Model.Approved == true)
+{
+    @if (Model.Deposits.Any())
+    {
+        <table cellpadding="10">
+            <caption>Список вкладов</caption>
+            <tr>
+                <th>Сумма</th>
+                <th>Процент %</th>
+                <th>Банк</th>
+            </tr>
+            @foreach (var deposit in Model.Deposits)
+            {
+                <tr>
+                    <td>@deposit.Money</td>
+                    <td>@deposit.Percent</td>
+                    <td>@deposit.Bank</td>
+                    @if (deposit.Blocked)
+                    {
+                        <td>Вклад заблокирован</td>
+                    }
+                    else
+                    {
+                        <td>
+                            <form asp-action="Get" asp-controller="Deposit" asp-anti-forgery="true" method="get">
+                                <input type="hidden" name="depositId" value="@deposit.Id" />
+                                <input type="submit" value="Снять вклад">
+                            </form>
+                        </td>
+                    }
+                    <td>
+                            <form asp-action="Transfer" asp-controller="Deposit" asp-anti-forgery="true" method="get">
+                                <input type="hidden" name="depositId" value="@deposit.Id" />
+                                <input type="submit" value="Перевести вклад">
+                            </form>
+                    </td>
+                        @if (deposit.Freezed)
+                        {
+                            <td>Вклад заморожен</td>
+                        }
+                        else
+                        {
+                            <td>
+                                <form asp-action="Add" asp-controller="Deposit" asp-anti-forgery="true" method="get">
+                                    <input type="hidden" name="depositId" value="@deposit.Id" />
+                                    <input type="submit" value="Пополнить вклад">
+                                </form>
+                            </td>
+                        }
+                    <td>
+                        <form asp-action="DepositReplenishments" asp-controller="Deposit" asp-anti-forgery="true" method="get">
+                            <input type="hidden" name="depositId" value="@deposit.Id" />
+                            <input type="submit" value="Список пополнений">
+                        </form>
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <p>У вас ещё нет вкладов</p>
+    }
+
+    @if (Model.Balances.Any())
+    {
+        <table cellpadding="10">
+            <caption>Список счетов</caption>
+            <tr>
+                <th>Название</th>
+                <th>Сумма</th>
+                <th>Банк</th>
+            </tr>
+            @foreach (var balance in Model.Balances)
+            {
+                <tr>
+                    <td>@balance.Name</td>
+                    <td>@balance.Money</td>
+                    <td>@balance.Bank</td>
+                    <td>
+                        <form asp-action="Close" asp-controller="Balance" asp-anti-forgery="true" method="get">
+                            <input type="hidden" name="balanceId" value="@balance.Id" />
+                            <input type="submit" value="Закрыть счет">
+                        </form>
+                    </td>
+                    <td>
+                        <form asp-action="Transfer" asp-controller="Balance" asp-anti-forgery="true" method="get">
+                            <input type="hidden" name="balanceId" value="@balance.Id" />
+                            <input type="submit" value="Перевести сумму на другой счет">
+                        </form>
+                    </td>
+                    <td>
+                        <form asp-action="Add" asp-controller="Balance" asp-anti-forgery="true" method="get">
+                            <input type="hidden" name="balanceId" value="@balance.Id" />
+                            <input type="submit" value="Пополнить счет">
+                        </form>
+                    </td>
+                    <td>
+                        <form asp-action="Transfers" asp-controller="Balance" asp-anti-forgery="true" method="get">
+                            <input type="hidden" name="balanceId" value="@balance.Id" />
+                            <input type="submit" value="Выписка">
+                        </form>
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <p>У вас ещё нет счетов</p>
+    }
+
+    @if (Model.Credits.Any())
+    {
+        <table cellpadding="10">
+            <caption>Список кредитов</caption>
+            <tr>
+                <th>Сумма</th>
+                <th>Процент</th>
+                <th>Выплачиваемая сумма</th>
+                <th>Выплачено</th>
+                <th>Дата оформления</th>
+                <th>Последний день выплат</th>
+            </tr>
+            @foreach (var credit in Model.Credits)
+            {
+                <tr>
+                    <td>@credit.Money</td>
+                    <td>@credit.Percent</td>
+                    <td>@credit.MoneyWithPercent</td>
+                    <td>@credit.MoneyPayed</td>
+                    @if (credit.Approved)
+                    {
+                        <td>@credit.CreationTime</td>
+                    }
+                    else
+                    {
+                        <td>---</td>
+                    }
+                    @if (credit.Approved)
+                    {
+                        <td>@credit.PaymentTime</td>
+                    }
+                    else
+                    {
+                        <td>---</td>
+                    }
+                    @if (credit.Approved == true)
+                    {
+                        if (credit.Getted)
+                        {
+                            <td>
+                                <form asp-action="Pay" asp-controller="Credit" asp-anti-forgery="true" method="get">
+                                    <input type="hidden" name="creditId" value="@credit.Id" />
+                                    <input type="submit" value="Выплатить за 1 месяц">
+                                </form>
+                                <form asp-action="PayAll" asp-controller="Credit" asp-anti-forgery="true" method="get">
+                                    <input type="hidden" name="creditId" value="@credit.Id" />
+                                    <input type="submit" value="Выплатить всю сумму">
+                                </form>
+                            </td>
+                            <td>
+                                <form asp-action="CreditPayments" asp-controller="Credit" asp-anti-forgery="true" method="get">
+                                    <input type="hidden" name="creditId" value="@credit.Id" />
+                                    <input type="submit" value="Список платежей">
+                                </form>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <form asp-action="Get" asp-controller="Credit" asp-anti-forgery="true" method="get">
+                                    <input type="hidden" name="creditId" value="@credit.Id" />
+                                    <input type="submit" value="Получить">
+                                </form>
+                            </td>
+                        }
+                    }
+                    else
+                    {
+                        <td>Кредит на рассмотрении</td>
+                    }
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <p>У вас ещё нет кредитов</p>
+    }
+}
+else
+{
+    <p>Регистрация не подтверждена</p>
+}

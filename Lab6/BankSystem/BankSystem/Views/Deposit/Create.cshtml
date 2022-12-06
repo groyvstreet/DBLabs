@@ -1,0 +1,33 @@
+﻿@model BankSystem.Models.DepositModels.CreateDepositModel
+
+<form asp-action="Profile" asp-controller="Client" asp-anti-forgery="true">
+    <input type="submit" value="Назад">
+</form>
+
+<h2>Создание вклада</h2>
+
+<form asp-action="Create" asp-controller="Deposit" asp-anti-forgery="true">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <div>
+        <div>
+            <label asp-for="Money">Введите денежную сумму</label><br />
+            <input type="text" asp-for="Money" />
+            <span asp-validation-for="Money" />
+        </div>
+        <div>
+            <label asp-for="BalanceName">Введите наименование счета</label><br />
+            <input type="text" asp-for="BalanceName" />
+        </div>
+        <input type="hidden" name="bankId" value="@ViewBag.BankId" />
+        <input type="hidden" asp-for="BankId" value="@ViewBag.BankId" />
+        <div>
+            <input type="submit" value="Создать вклад" />
+        </div>
+    </div>
+</form>
+
+@section scripts{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

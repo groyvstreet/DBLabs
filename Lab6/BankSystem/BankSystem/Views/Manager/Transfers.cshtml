@@ -1,0 +1,56 @@
+﻿@using BankSystem.Models.Entities
+@model IEnumerable<Transfer>
+
+<form asp-action="Clients" asp-controller="Manager" asp-anti-forgery="true">
+    <input type="submit" value="Назад">
+</form>
+
+@if (Model.Any())
+{
+    <table cellpadding="10" border="1">
+        <caption>Переводы</caption>
+        <tr>
+            <th>Счет-отправитель</th>
+            <th>Счет-получатель</th>
+        </tr>
+        @foreach (var transfer in Model)
+        {
+            <tr>
+                <td>
+                    @if (transfer.BalanceNameFrom == null)
+                    {
+                        <div>Счет закрыт</div>
+                    }
+                    else
+                    {
+                        <div>Банк: @transfer.BankNameFrom</div>
+                        <div>Почта клиента: @transfer.ClientEmailFrom</div>
+                        <div>Наименование счета: @transfer.BalanceNameFrom</div>
+                    }
+                </td>
+                <td>
+                    @if (transfer.BalanceNameTo == null)
+                    {
+                        <div>Счет закрыт</div>
+                    }
+                    else
+                    {
+                        <div>Банк: @transfer.BankNameTo</div>
+                        <div>Почта клиента: @transfer.ClientEmailTo</div>
+                        <div>Наименование счета: @transfer.BalanceNameTo</div>
+                    }
+                </td>
+                <td>
+                    <div>Сумма перевода: @transfer.Money</div>
+                </td>
+                <td>
+                    <div>Дата и время: @transfer.DateTime</div>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>Переводов нет</p>
+}

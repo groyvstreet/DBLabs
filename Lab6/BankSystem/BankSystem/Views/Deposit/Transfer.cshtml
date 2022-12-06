@@ -1,0 +1,35 @@
+﻿@model BankSystem.Models.DepositModels.TransferDepositModel
+
+<form asp-action="Profile" asp-controller="Client" asp-anti-forgery="true" method="get">
+    <input type="submit" value="Назад">
+</form>
+
+<p>Сумма перевода @Model.Money</p>
+
+<table cellpadding="10">
+    <caption>Список вкладов</caption>
+    <tr>
+        <th>Сумма</th>
+        <th>Процент %</th>
+        <th>Банк</th>
+    </tr>
+    @foreach (var deposit in Model.Deposits)
+    {
+        @if (deposit.Id != Model.IdFrom)
+        {
+            <tr>
+                <td>@deposit.Money</td>
+                <td>@deposit.Percent</td>
+                <td>@deposit.Bank</td>
+                <td>
+                        <form asp-action="Transfer" asp-controller="Deposit" asp-anti-forgery="true" method="post">
+                            <input type="hidden" asp-for="IdTo" value="@deposit.Id" />
+                            <input type="hidden" asp-for="IdFrom" value="@ViewBag.DepositId" />
+                            <input type="hidden" asp-for="Money" value="@ViewBag.Money" />
+                            <input type="submit" value="Перевести сюда">
+                        </form>
+                </td>
+            </tr>
+        }
+    }
+</table>
