@@ -6,6 +6,10 @@
         <input type="hidden" name="bankId" value="@Model.Id" />
         <input type="submit" value="Редактировать">
     </form>
+    <form asp-action="CreateManager" asp-controller="Admin" asp-anti-forgery="true" method="get">
+        <input type="hidden" name="bankId" value="@Model.Id" />
+        <input type="submit" value="Создать менеджера">
+    </form>
 }
 
 <h1>@Model.Name</h1>

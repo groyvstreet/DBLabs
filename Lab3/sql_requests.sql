@@ -22,11 +22,11 @@ CREATE TABLE users
 	user_name varchar(1000) NOT NULL,
 	password varchar(1000) NOT NULL,
 	email varchar(1000) NOT NULL,
-	phone_number varchar(12) NOT NULL,
+	phone_number varchar(13) NOT NULL,
 	first_name varchar(100) NOT NULL,
 	last_name varchar(100) NOT NULL,
 	patronimic varchar(100) NOT NULL,
-	role_id uuid REFERENCES roles(id) NOT NULL
+	role_id uuid REFERENCES roles(id) ON DELETE CASCADE
 );
 
 CREATE INDEX user_id_index ON users (id);
@@ -41,19 +41,19 @@ CREATE TABLE banks
 
 CREATE TABLE managers
 (
-	id uuid PRIMARY KEY REFERENCES users(id),
-	bank_id uuid REFERENCES banks(id) NOT NULL
+	id uuid PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+	bank_id uuid REFERENCES banks(id) ON DELETE CASCADE
 );
 
 CREATE TABLE blacklists
 (
 	id uuid PRIMARY KEY,
-	bank_id uuid REFERENCES banks(id) NOT NULL UNIQUE
+	bank_id uuid REFERENCES banks(id) ON DELETE CASCADE
 );
 
 CREATE TABLE clients
 (
-	id uuid PRIMARY KEY REFERENCES users(id),
+	id uuid PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
 	passport_series varchar(50) NOT NULL,
 	passport_number_series varchar(50) NOT NULL,
 	passport_identification_number varchar(50) NOT NULL,
@@ -62,16 +62,16 @@ CREATE TABLE clients
 
 CREATE TABLE blacklistclients
 (
-	black_list_id uuid REFERENCES blacklists(id) NOT NULL,
-	client_id uuid REFERENCES clients(id) NOT NULL,
+	black_list_id uuid REFERENCES blacklists(id) ON DELETE CASCADE,
+	client_id uuid REFERENCES clients(id) ON DELETE CASCADE,
 	blacklisting_date date NOT NULL,
 	reason text NOT NULL
 );
 
 CREATE TABLE bankclients
 (
-	bank_id uuid REFERENCES banks(id) NOT NULL,
-	client_id uuid REFERENCES clients(id) NOT NULL
+	bank_id uuid REFERENCES banks(id) ON DELETE CASCADE,
+	client_id uuid REFERENCES clients(id) ON DELETE CASCADE
 );
 
 CREATE TABLE balances
@@ -79,8 +79,8 @@ CREATE TABLE balances
     id uuid PRIMARY KEY,
     name varchar(100) NOT NULL,
     money decimal NOT NULL,
-    client_id uuid REFERENCES clients(id) NOT NULL,
-    bank_id uuid REFERENCES banks(id) NOT NULL
+    client_id uuid REFERENCES clients(id) ON DELETE CASCADE,
+    bank_id uuid REFERENCES banks(id) ON DELETE CASCADE
 );
 
 CREATE INDEX client_id_index1 ON balances (client_id);
@@ -105,8 +105,8 @@ CREATE TABLE deposits
     creation_date date NOT NULL,
     is_blocked boolean NOT NULL,
     is_freezed boolean NOT NULL,
-    client_id uuid REFERENCES clients(id) NOT NULL,
-    bank_id uuid REFERENCES banks(id) NOT NULL
+    client_id uuid REFERENCES clients(id) ON DELETE CASCADE,
+    bank_id uuid REFERENCES banks(id) ON DELETE CASCADE
 );
 
 CREATE INDEX client_id_index2 ON deposits (client_id);
@@ -122,8 +122,8 @@ CREATE TABLE credits
     payment_date date NOT NULL,
     is_approved boolean NOT NULL,
 	is_getted boolean NOT NULL,
-    client_id uuid REFERENCES clients(id) NOT NULL,
-    bank_id uuid REFERENCES banks(id) NOT NULL
+    client_id uuid REFERENCES clients(id) ON DELETE CASCADE,
+    bank_id uuid REFERENCES banks(id) ON DELETE CASCADE
 );
 
 CREATE INDEX client_id_index3 ON credits (client_id);

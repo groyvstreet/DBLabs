@@ -3,8 +3,10 @@ create or replace function add_credit_payment() returns trigger language plpgsql
 declare
 	money decimal;
 begin
-    money = NEW.money_payed - OLD.money_payed;
-    insert into creditpayments values (gen_random_uuid(), money, NOW()::timestamp, OLD.id);
+    if NEW.money_payed <> OLD.money_payed then
+        money = NEW.money_payed - OLD.money_payed;
+        insert into creditpayments values (gen_random_uuid(), money, NOW(), OLD.id);
+    end if;
 
     return NEW;
 end;
@@ -18,8 +20,10 @@ create or replace function add_deposit_replenishment() returns trigger language 
 declare
 	money decimal;
 begin
-    money = NEW.money - OLD.money;
-    insert into depositreplenishments values (gen_random_uuid(), money, NOW()::timestamp, OLD.id);
+    if NEW.money <> OLD.money then
+        money = NEW.money - OLD.money;
+        insert into depositreplenishments values (gen_random_uuid(), money, NOW(), OLD.id);
+    end if;
 
     return NEW;
 end;
@@ -69,6 +73,18 @@ begin
         (select id from users where user_name = to_user_name) and bank_id =
 					(select id from banks where name = to_bank_name));
 
-    insert into transfers values(gen_random_uuid(), money, NOW()::timestamp, from_balance_id, to_balance_id);
+    insert into transfers values(gen_random_uuid(), money, NOW(), from_balance_id, to_balance_id);
 end;
 $$
+
+-- insert bank
+create or replace function insert_black_list() returns trigger language plpgsql as $$
+begin
+    insert into blacklists values(gen_random_uuid(), NEW.id);
+
+    return NEW;
+end;
+$$
+
+create trigger trigger_bank
+after insert on banks for each row execute procedure insert_black_list();

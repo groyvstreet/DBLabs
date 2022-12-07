@@ -1,0 +1,59 @@
+﻿@model BankSystem.Models.AdminModels.CreateManagerModel
+
+<h2>Создание менеджера</h2>
+
+<form asp-action="CreateManager" asp-controller="Admin" asp-anti-forgery="true">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <div>
+        <div>
+            <label asp-for="UserName">Введите Имя пользователя</label><br />
+            <input type="text" asp-for="UserName" />
+            <span asp-validation-for="UserName" />
+        </div>
+        <div>
+            <label asp-for="Email">Введите Email</label><br />
+            <input type="text" asp-for="Email" />
+            <span asp-validation-for="Email" />
+        </div>
+        <div>
+            <label asp-for="FirstName">Введите Имя</label><br />
+            <input type="text" asp-for="FirstName" />
+            <span asp-validation-for="FirstName" />
+        </div>
+        <div>
+            <label asp-for="LastName">Введите Фамилию</label><br />
+            <input type="text" asp-for="LastName" />
+            <span asp-validation-for="LastName" />
+        </div>
+        <div>
+            <label asp-for="Patronymic">Введите Отчество</label><br />
+            <input type="text" asp-for="Patronymic" />
+            <span asp-validation-for="Patronymic" />
+        </div>
+        <div>
+            <label asp-for="PhoneNumber">Введите номер телефона</label><br />
+            <input type="text" asp-for="PhoneNumber" />
+            <span asp-validation-for="PhoneNumber" />
+        </div>
+        <div>
+            <label asp-for="Password">Введите пароль</label><br />
+            <input asp-for="Password" />
+            <span asp-validation-for="Password" />
+        </div>
+        <div>
+            <label asp-for="ConfirmPassword">Повторите пароль</label><br />
+            <input asp-for="ConfirmPassword" />
+            <span asp-validation-for="ConfirmPassword" />
+        </div>
+        <input type="hidden" asp-for="BankId" value="@ViewBag.BankId" />
+        <div>
+            <input type="submit" value="Создать" />
+        </div>
+    </div>
+</form>
+
+@section scripts{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
